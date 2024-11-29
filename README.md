@@ -1,6 +1,6 @@
 # Consola-Joc-Minesweeper
 ## Introducere
-  Ideea mea de proiect a fost sa implementez cunoscutul joc Minesweeper cu ajutorul unui microcontroller si al unui ecran LCD. Am fost motivat sa aleg aceasta tema de proiect, deoarece Minesweeper este un joc pe care il joc cu placere inca din copilarie. Scopul jocului este unul de entertainment. Obiectivul este de a curata tabla fara a detona nicio mina din grid, cu ajutorul unor indicii despre numarul de mine invecinate din fiecare casuta.
+  Ideea mea de proiect a fost sa implementez cunoscutul joc Minesweeper cu ajutorul unui microcontroller, unui joystick si al unui ecran LCD. Am fost motivat sa aleg aceasta tema de proiect, deoarece Minesweeper este un joc pe care il joc cu placere inca din copilarie. Scopul jocului este unul de entertainment. Obiectivul este de a curata tabla fara a detona nicio mina din grid, cu ajutorul unor indicii despre numarul de mine invecinate din fiecare casuta.
   Dupa parerea mea este o modalitate buna de a te distra si de a scapa de stres.
 ## Descriere generală
 ## Hardware Design
