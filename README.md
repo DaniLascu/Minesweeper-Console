@@ -5,6 +5,6 @@
 ## Software Design
 ## Rezultate Obţinute
 ## Concluzii
-## Cod sursă
+## Cod sursă și alte resurse
 ## Jurnal
 ## Bibliografie/Resurse
