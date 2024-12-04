@@ -1,13 +1,13 @@
-# Consola-Joc-Minesweeper
-## Introducere
-  Ideea mea de proiect a fost sa implementez cunoscutul joc Minesweeper cu ajutorul unui microcontroller, unui joystick si al unui ecran LCD. Am fost motivat sa aleg aceasta tema de proiect, deoarece Minesweeper este un joc pe care il joc cu placere inca din copilarie. Scopul jocului este unul de entertainment. Obiectivul este de a curata tabla fara a detona nicio mina din grid, cu ajutorul unor indicii despre numarul de mine invecinate din fiecare casuta.
-  Dupa parerea mea este o modalitate buna de a te distra si de a scapa de stres.
-## Descriere generală
+# Minesweeper-Console
+## Introduction
+  My project idea was to implement the well-known Minesweeper game using a microcontroller, a joystick and an LCD screen. I was motivated to choose this project topic because Minesweeper is a game that I have enjoyed playing since childhood. The purpose of the game is entertainment. The objective is to clear the board without detonating any mines in the grid, using clues about the number of neighboring mines in each cell.
+  In my opinion, it is a good way to have fun and relieve stress.
+## General Description
 ## Hardware Design
 ## Software Design
-## Rezultate Obţinute
-## Concluzii
-## Cod sursă și alte resurse
-## Jurnal
-- Prima problema de care m-am lovit a fost posibilitatea de a nu avea destula memorie pentru a rula jocul, deoarece trebuie retinuta starea curenta a grid-ului, starea anterioara (foarte multe variabile) si trebuie gestionate animatiile de pe LCD. Asa ca am decis sa folosesc microcontroller-ul ESP32, care ofera mai multa memorie RAM decat Arduino UNO, dar ai carui pini functioneaza la tensiunea 3.3V.
-## Bibliografie/Resurse
+## Obtained Results
+## Conclusions
+## Source Code and other resources
+## Journal
+- The first problem I encountered was the possibility of not having enough memory to run the game, since the current state of the grid must be remembered, the previous state (many variables) and the animations on the LCD must be managed. So I decided to use the ESP32 microcontroller, which offers more RAM than the Arduino UNO, but whose pins operate at 3.3V.
+## Bibliography/Resurse
