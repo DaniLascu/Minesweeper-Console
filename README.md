@@ -8,6 +8,9 @@ The Console is based on the ESP32-WROOM-32D microcontroller. A 2.2" 320x240px TF
 ![Schema_bloc](https://github.com/user-attachments/assets/877daeec-10f9-4f07-90f1-089c6d5fcd59)
 
 ## Hardware Design
+### Electrical Diagram
+![Schema_electrica](https://github.com/user-attachments/assets/c217cd65-7bc2-4756-9e7f-01a78813f73f)
+
 ## Software Design
 ## Obtained Results
 ## Conclusions
