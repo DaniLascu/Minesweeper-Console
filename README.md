@@ -13,7 +13,8 @@ The Console is based on the ESP32-WROOM-32D microcontroller. A 2.2" 320x240px TF
 ### Bill Of Materials
 |Nr.|Component|Quantity|Datasheet|
 |:---:|:---|:---:|:---:|
-|1.|[ESP32-WROOM-32D](https://www.optimusdigital.ro/ro/placi-cu-bluetooth/4371-placa-de-dezvoltare-esp32-cu-wifi-i-bluetooth-42.html)|1||
+|1.|[ESP32-WROOM-32D](https://www.optimusdigital.ro/ro/placi-cu-bluetooth/4371-placa-de-dezvoltare-esp32-cu-wifi-i-bluetooth-42.html)|1|[esp32-wroom-32d_esp32-wroom-32u_datasheet_en (2).pdf](https://github.com/user-attachments/files/18167930/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.2.pdf)
+|
 ## Software Design
 ## Obtained Results
 ## Conclusions
