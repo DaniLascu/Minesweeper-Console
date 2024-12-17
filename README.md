@@ -26,7 +26,7 @@ The Console is based on the ESP32-WROOM-32D microcontroller. A 2.2" 320x240px TF
 - The input analog signal of the speaker is given through the DAC1 - IO25 pin and is first passed to the LM386 amplifier module that raises it to 0.5 W.
 - The joystick's Ox and Oy axis movement are translated to Voltage by the ADC pins SENSOR_VP and SENSOR_VN, that use a refference voltage of 3V3. The software uses those values and some thresholds to decide if the movent of the joystick is Left, Right, Up or Down.
 - The Joystick pushbutton is connected to GPIO32
-- The other 2 pushbuttons are connected to GPIO27 and GPIO33. I use 330 Ohm resistors for both the puthbuttons to use the in input-pullup mode.
+- The other 2 pushbuttons are connected to GPIO27 and GPIO33. I use 330 Ohm resistors for both the puthbuttons to use the input-pullup mode.
 ## Software Design
 ## Obtained Results
 ## Conclusions
