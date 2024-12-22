@@ -29,7 +29,7 @@ The Console is based on the ESP32-WROOM-32D microcontroller. A 2.2" 320x240px TF
 - The other 2 pushbuttons are connected to GPIO27 and GPIO33. I use 330 Ohm resistors for both the puthbuttons to use the input-pullup mode.
   |Component|ESP32 Pins|Description|
   |:---:|:---|:---|
-  |Buttons|IO27,IO33|use 330 Ohm pullup-resistors|
+  |Buttons|IO27, IO33|use 330 Ohm pullup-resistors|
   |Joystick(VRY,VRX,SW)|SENSOR_VP, SENSOR_VN, IO32|Analog inputs for the horizontal and vertical axis mvement|
   |TFT Display|IO23 = MOSI, IO19 = MISO, IO18 = CLK, IO5 = CS, D/C = IO2, RESET = IO4, LED = 3V3|VSPI interface|
   |LM386 Amplifier Module|IO25|DAC pin|
