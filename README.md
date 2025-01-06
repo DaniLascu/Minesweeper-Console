@@ -299,6 +299,7 @@ The commands are symbolic constants used to represent joystick movements in code
 The joystick's position is captured by reading values from the ADC pin.
 The ADC value is compared to the defined thresholds (LEFT_THRESHOLD, RIGHT_THRESHOLD, UP_THRESHOLD, and DOWN_THRESHOLD).
 The command are then used in the game logic.
+
 ```C
 //treshold-uri pentru mutarea pozitiei la stanga, la dreapta, sus si jos cu joystick-ul
 #define LEFT_THRESHOLD  1000 
