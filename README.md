@@ -47,7 +47,7 @@ Every Cell of the board is in fact a variable of the Struct type shown below. Th
 - if the cell contains a mine;
 - number of neighbour mines;
 - if the cell is flagged;
-- if the cell is open;
+- if the cell is open;<br/>
 The Cell Grid is a matrix of "struct cell" variables.
 ```C
 // struct ce reprezinta o celula din grid
@@ -59,6 +59,39 @@ struct cell{
 };
 
 struct cell bomb_grid[ROWS][COLUMNS]; 
+```
+Every time the **Game** is **STARTED**, the program must generate the **Mine Board**. As it is shown at first, every cell is closed, unflagged, and has 0 mines.
+The flaged and open attributes are used when displaying the grid. Then this function randomly generates and places mines, depending on the difficulty that was selected.
+The function also checks that a mine is not already present in the cell it wants to place the new mine in.
+```C
+#define MINES_EASY 8
+#define MINES_MEDIUM 10
+#define MINES_HARD 15
+
+void generate_bombs(int difficulty){
+  for(int i = 0; i < ROWS; i++){
+    for(int j = 0; j < COLUMNS; j++){
+      bomb_grid[i][j].mine = false;
+      bomb_grid[i][j].mines_num = 0;
+      bomb_grid[i][j].flaged = false;
+      bomb_grid[i][j].open = false;
+    }
+  }
+
+  srand(time(0)); //use current time for seed
+
+  for(int i = 0; i < difficulty; i++){
+    int poz_i = rand() % ROWS;
+    int poz_j = rand() % COLUMNS;
+
+    if(bomb_grid[poz_i][poz_j].mine == true){//daca o bomba e deja pe acea pozitie mai generez o data pozitiile
+      i--;
+    }
+    else{
+      bomb_grid[poz_i][poz_j].mine = true; //altfel se pune o mina in acea celula
+    }
+  }
+}
 ```
 ## Obtained Results
 ## Conclusions
