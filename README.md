@@ -351,7 +351,12 @@ void joystick_logic(){
 }
 
 ```
-This code snippet shows how the joystick is used to chose a difficulty option.
+This code snippet shows how the joystick is used to chose a difficulty option.<br/>
+Depending on the command provided by the joystick, the TFT LCD displays a **selector** by the shape of a red dor near the currently selected option.<br/>
+When the joystick is pressed the difficulty has been chosen.<br/>
+The red circle is a clear visual cue to the player, showing which difficulty option is currently selected.
+The use of the joystick to cycle through options is intuitive and allows for smooth interaction with the menu.
+The code waits for a button press to start, then uses the joystick to cycle through difficulty options. The selected difficulty is confirmed with the joystick button press, and the game proceeds to the next stage. The display and user interaction are well-managed to ensure an easy and engaging experience.
 ```C
  if(joystick_btn == 1 && start_menu_option == 1){ //daca butonul de pe joystick a fost apasat si optiunea = 1(START) dau drumul la joc
       game_started = 1; 
