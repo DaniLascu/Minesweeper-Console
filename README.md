@@ -36,6 +36,8 @@ The Console is based on the ESP32-WROOM-32D microcontroller. A 2.2" 320x240px TF
   |TFT Display|IO23 = MOSI, IO19 = MISO, IO18 = CLK, IO5 = CS, IO2 = D/C, IO4 = RESET, 3V3 = LED|VSPI interface|
   |MicroSD Card Adapter|IO23 = MOSI, IO19 = MISO, IO18 = CLK, IO16 = CS, 3V3 = VCC, GND|VSPI interface|
 ## Software Design
+### Development Environment
+I used PlatformIO IDE for VSCode.
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
