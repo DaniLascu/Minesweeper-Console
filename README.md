@@ -200,6 +200,92 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
   }
 }
 ```
+### Pushbuttons
+All three pushbuttons were debounced using **intterupts**.
+```C
+//variabile pentru debouncing butoane in intreruperi
+volatile unsigned long last_interrupt_time_start_btn = 0;
+volatile unsigned long interrupt_time_start_btn;
+
+volatile unsigned long last_interrupt_time_open_btn = 0;
+volatile unsigned long interrupt_time_open_btn;
+
+volatile unsigned long last_interrupt_time_flag_btn = 0;
+volatile unsigned long interrupt_time_flag_btn = 0;
+
+//ISR pentru apasarea butonului de pe joystick
+void IRAM_ATTR ISR_START() { // se trimite o intrerupere de fiecare data cand este apasat butonul de start
+  // Check status of switch
+  // Toggle on variable if button pressed
+  
+  interrupt_time_start_btn = millis();//retine momentul la care s-a produs intreruperea curenta
+
+  //Daca intreruperile vin mai repede de 200 de ms inseamna ca a fost zgomot electric
+  if(interrupt_time_start_btn - last_interrupt_time_start_btn > 200){
+    //daca butonul a fost apasat
+    if (digitalRead(SW_PIN) == LOW) {
+      // Switch was pressed
+      // schimba starea variabilei joystick_btn
+      joystick_btn = 1;
+    }
+  }
+
+  last_interrupt_time_start_btn = interrupt_time_start_btn;
+  
+}
+
+//ISR pentru apasarea butonului open
+void IRAM_ATTR ISR_OPEN() { // se trimite o intrerupere de fiecare data cand este apasat butonul de start
+  // Check status of switch
+  // Toggle on variable if button pressed
+  
+  interrupt_time_open_btn = millis();//retine momentul la care s-a produs intreruperea curenta
+
+  //Daca intreruperile vin mai repede de 200 de ms inseamna ca a fost zgomot electric
+  if(interrupt_time_open_btn - last_interrupt_time_open_btn > 200){
+    //daca butonul a fost apasat
+    if (digitalRead(OPEN_BTN) == LOW) {
+      // Switch was pressed
+      // schimba starea variabilei open_button
+      open_button = 1;
+    }
+  }
+
+  last_interrupt_time_open_btn = interrupt_time_open_btn;
+  
+}
+
+//ISR pentru apasarea butonului flag
+void IRAM_ATTR ISR_FLAG() { // se trimite o intrerupere de fiecare data cand este apasat butonul de start
+  // Check status of switch
+  // Toggle on variable if button pressed
+  
+  interrupt_time_flag_btn = millis();//retine momentul la care s-a produs intreruperea curenta
+
+  //Daca intreruperile vin mai repede de 200 de ms inseamna ca a fost zgomot electric
+  if(interrupt_time_flag_btn - last_interrupt_time_flag_btn > 200){
+    //daca butonul a fost apasat
+    if (digitalRead(FLAG_BTN) == LOW) {
+      // Switch was pressed
+      // schimba starea variabilei flag_button
+      flag_button = 1;
+    }
+  }
+
+  last_interrupt_time_flag_btn = interrupt_time_flag_btn;
+  
+}
+```
+```C
+  pinMode(SW_PIN, INPUT_PULLUP); //pushbutton-ul de pe joystick
+  attachInterrupt(digitalPinToInterrupt(SW_PIN), ISR_START, FALLING); //se trimite o intrerupere de fiecare data cand este apasat butonul de start
+
+  pinMode(OPEN_BTN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(OPEN_BTN), ISR_OPEN, FALLING);
+
+  pinMode(FLAG_BTN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(FLAG_BTN), ISR_FLAG, FALLING);
+```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
