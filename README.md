@@ -286,6 +286,70 @@ void IRAM_ATTR ISR_FLAG() { // se trimite o intrerupere de fiecare data cand est
   pinMode(FLAG_BTN, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(FLAG_BTN), ISR_FLAG, FALLING);
 ```
+### Joystick Movement
+The joystick has 4 **COMMANDS**:
+- Up
+- Down
+- Left
+- Right
+<br/>
+The code snippet defines a set of threshold values and commands to interpret joystick movements based on ADC (Analog-to-Digital Converter) readings.<br/>
+Thresholds are numeric boundaries used to determine the direction of joystick movement based on ADC readings.<br/>
+The commands are symbolic constants used to represent joystick movements in code. Each command is assigned a unique hexadecimal value.<br/>
+The joystick's position is captured by reading values from the ADC pin.
+The ADC value is compared to the defined thresholds (LEFT_THRESHOLD, RIGHT_THRESHOLD, UP_THRESHOLD, and DOWN_THRESHOLD).
+The command are then used in the game logic.
+```C
+//treshold-uri pentru mutarea pozitiei la stanga, la dreapta, sus si jos cu joystick-ul
+#define LEFT_THRESHOLD  1000 
+#define RIGHT_THRESHOLD 3000
+#define UP_THRESHOLD    1000
+#define DOWN_THRESHOLD  3000
+
+#define COMMAND_NO     0x00
+#define COMMAND_LEFT   0x01
+#define COMMAND_RIGHT  0x02
+#define COMMAND_UP     0x04
+#define COMMAND_DOWN   0x08
+```
+
+This is the function that is tasked with determining the appropriate joystick command.
+```C
+void joystick_logic(){
+
+  joystick_read = millis();
+  command = COMMAND_NO;
+
+  if(joystick_read - last_joystick_read > JOYSTICK_READ_PERIOD){
+    value_x = analogRead(VRX_PIN);
+    value_y = analogRead(VRY_PIN);
+   
+
+    // Serial.print("Value X: ");
+    // Serial.print(value_x);
+    // Serial.print(" | Value Y: ");
+    // Serial.println(value_y);
+
+    // check left/right commands
+    if (value_x < LEFT_THRESHOLD){
+      command = command | COMMAND_LEFT;
+    }else if (value_x > RIGHT_THRESHOLD){
+      command = command | COMMAND_RIGHT;
+    }
+
+    // check up/down commands
+    if (value_y < UP_THRESHOLD){
+      command = command | COMMAND_UP;
+    }else if (value_y > DOWN_THRESHOLD){
+      command = command | COMMAND_DOWN;
+    }
+    
+    
+    last_joystick_read = joystick_read;
+  }
+}
+
+```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
