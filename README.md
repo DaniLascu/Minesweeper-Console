@@ -48,7 +48,7 @@ Every cell of the board is in fact a variable of the Struct type shown below. Th
 - number of neighbour mines;
 - if the cell is flagged;
 - if the cell is open;
-```arduino
+```C
 // struct ce reprezinta o celula din grid
 struct cell{
   bool mine; //1 daca o bomba se afla in celula; 0 daca nu 
