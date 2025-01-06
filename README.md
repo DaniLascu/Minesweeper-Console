@@ -147,7 +147,7 @@ void draw_cursor(){
   tft.drawRect(cursor_x * 24, cursor_y * 24, 24, 24, ILI9341_RED); //face marginile noii casete selectate rosii
 }
 ```
-This function didplays every cell base on the state of it's attributes:
+This function displays every cell base on the state of it's attributes:
 - if the cell is opend the number of neighbouring mines will be displayed (if there are none, the cell will be black)
 - if the cell is flagged, it will have a flag symbol drawn on it
 - if the player opens a flagged cell, the cell will lose it's flag but not open
