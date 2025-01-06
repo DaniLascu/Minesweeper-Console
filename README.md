@@ -26,13 +26,13 @@ The Console is based on the ESP32-WROOM-32D microcontroller. A 2.2" 320x240px TF
 ### Pin Configuration
 - I connected the TFT LCD via one of the ESP32's SPI interfaces - VSPI -. The pins I used are: IO23 = MOSI, IO19 = MISO, IO18 = CLK, IO5 = CS, D/C = IO2, RESET = IO4 and LED = 3V3.
 - The MicroSD Adapter Module is connected via SPI interface to the microcontroller - VSPI. I used  the same pins for MOSI, MISO, CLK as for the TFT screen, but I used a different pin IO16, for CS.
-- The joystick's Ox and Oy axis movement are translated to Voltage by the ADC pins SENSOR_VP and SENSOR_VN, that use a refference voltage of 3V3. The software uses those values and some thresholds to decide if the movent of the joystick is Left, Right, Up or Down.
+- The joystick's Ox and Oy axis movement are translated to Voltage, then transformed into digital values by the ADC pins SENSOR_VP and SENSOR_VN, that use a refference voltage of 3V3. The software uses those values and some thresholds to decide if the movent of the joystick is Left, Right, Up or Down.
 - The Joystick pushbutton is connected to GPIO32
 - The other 2 pushbuttons are connected to GPIO27 and GPIO33. I use 330 Ohm resistors for both the puthbuttons to use the input-pullup mode.
   |Component|ESP32 Pins|Description|
   |:---:|:---|:---|
   |Buttons|IO27, IO33|use 330 Ohm pullup-resistors|
-  |Joystick(VRY,VRX,SW)|SENSOR_VP, SENSOR_VN, IO32|Analog inputs for the horizontal and vertical axis mvement|
+  |Joystick(VRY,VRX,SW)|SENSOR_VP, SENSOR_VN, IO32|Analog inputs for the horizontal and vertical axis mvement; Uses ADC to convert analogue values into digital ones|
   |TFT Display|IO23 = MOSI, IO19 = MISO, IO18 = CLK, IO5 = CS, IO2 = D/C, IO4 = RESET, 3V3 = LED|VSPI interface|
   |MicroSD Card Adapter|IO23 = MOSI, IO19 = MISO, IO18 = CLK, IO16 = CS, 3V3 = VCC, GND|VSPI interface|
 ## Software Design
