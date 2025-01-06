@@ -351,6 +351,77 @@ void joystick_logic(){
 }
 
 ```
+This code snippet shows how the joystick is used to chose a difficulty option.
+```C
+ if(joystick_btn == 1 && start_menu_option == 1){ //daca butonul de pe joystick a fost apasat si optiunea = 1(START) dau drumul la joc
+      game_started = 1; 
+      joystick_btn = 0; //fac din nou valoarea joystick_btn 0, pentru a putea verifica din nou daca 
+                        //butonul a fost apasat, deoarece a fost facuta 1 in intrerupere
+
+      tft.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT,ILI9341_BLUE); //jucatorul este rugat sa aleaga dificultatea
+      tft.setCursor(70, 60);
+      tft.setTextSize(2);
+      tft.print("Dificultate");
+
+      tft.setCursor(80, 100);
+      tft.print("Usor");
+      tft.setCursor(80, 120);
+      tft.print("Mediu");
+      tft.setCursor(80, 140);
+      tft.print("Greu");
+
+      tft.fillCircle(60, menu_cursor[menu_joystick_cursor], 10, ILI9341_RED); //selectorul este un cerc rosu
+
+      while(difficulty == 0){ //se selecteaza dificultatea cu ajutorul joystick-ului
+        //cat timp difficulty = 0 inseamna ca nu s-a selectat inca dificultatea. se asteapta pana este selectata
+        joystick_logic(); //se citeste in continuu comanda data de joystick
+
+        if(command == COMMAND_DOWN){ //se schimba cursorul de pe ecran in functie de joystick
+          if(menu_joystick_cursor == 2){
+            menu_joystick_cursor = 0;
+          }
+          else{
+            menu_joystick_cursor ++; 
+          }
+        }
+
+        if(command == COMMAND_UP){
+          if(menu_joystick_cursor == 0){
+            menu_joystick_cursor = 2;
+          }
+          else{
+            menu_joystick_cursor --; 
+          }
+        }
+        tft.fillCircle(60, menu_cursor[0], 10, ILI9341_BLUE);
+        tft.fillCircle(60, menu_cursor[1], 10, ILI9341_BLUE);
+        tft.fillCircle(60, menu_cursor[2], 10, ILI9341_BLUE);
+        tft.fillCircle(60, menu_cursor[menu_joystick_cursor], 10, ILI9341_RED);
+        delay(50); //se afiseaza pe ecran selectorul la dificultatea aleasa cu ajutorul joystick-ului
+
+        if(joystick_btn){ //daca a fost apasat butonul de pe joystick, s-a alaes dificultatea selectata
+          joystick_btn = 0; //redevine 0 altfel la inceperea jocului intre in meniul de pauza
+          switch(menu_joystick_cursor){ //in functie de dificulattea selectata, variabila difficulty va stoca nr de mine corespunzator
+            case 0:
+              difficulty = MINES_EASY;
+              break;
+            case 1:
+              difficulty = MINES_MEDIUM;
+              break;
+            case 2:
+              difficulty = MINES_HARD;
+              break;
+            default:
+              break;
+          }
+        }
+      }
+    //dupa ce s-a ales dificultatea generez animatia de start a jocului si construiesc grid-ul
+      if(game_started == 1){
+        start_game();
+      }
+    }
+```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
