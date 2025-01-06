@@ -132,6 +132,74 @@ void calculate_number_of_neighbour_bombs(){
   }
 }
 ```
+### Some LCD display Functions
+These variables are used to keep the position of the cursor on the board.
+```C
+uint8_t prev_cursor_x = 0;
+uint8_t prev_cursor_y = 0;
+uint8_t cursor_x = 0;
+uint8_t cursor_y = 0;
+```
+When the cursor is moved, the old position of the cursor is erased
+```C
+void draw_cursor(){
+  tft.drawRect(prev_cursor_x * 24, prev_cursor_y * 24, 24, 24, ILI9341_BLACK); //face marginile vechii casete negre
+  tft.drawRect(cursor_x * 24, cursor_y * 24, 24, 24, ILI9341_RED); //face marginile noii casete selectate rosii
+}
+```
+This function didplays every cell base on the state of it's attributes:
+- if the cell is opend the number of neighbouring mines will be displayed (if there are none, the cell will be black)
+- if the cell is flagged, it will have a flag symbol drawn on it
+- if the player opens a flagged cell, the cell will lose it's flag but not open
+- if the player opens a cell that has a mine, the cell will be black with a red 'X' in the middle
+```C
+void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
+  /*
+  * functie care afiseaza fiecare celula in functie de proprietatile acesteia
+  *daca celula nu a fost deschisa se afiseaza blanc
+  *daca player-ul a considerat ca este o bomba si a pus un flag pe acea celula
+  *se va afisa un '!'
+  *daca celula a fost deschisa, iar acolo nu se afla nici o mina, celula va fii neagra, daca nu se invecineaza cu vreo mina,
+  *altfel va afisa nr de mine adiacente 
+  *daca player-ul a deschis celula, iar acolo se afla o mina se va afisa 'X'
+  */
+  
+  if(block.open == false && block.flaged == false){
+    //daca celula nu este nici deschisa si nu are nici flag: se lasa alb
+    tft.fillRect(pos_x * 24 + 1, pos_y * 24 + 1, 22, 22, ILI9341_WHITE);
+  }
+  
+  if(block.open == false && block.flaged == true){
+    //daca player_ul a apus un flag pe acea celula
+    tft.fillRect(pos_x * 24 + 1, pos_y * 24 + 1, 22, 22, ILI9341_WHITE);
+    tft.setCursor(24 * pos_x + 1, 24 * pos_y + 1);
+    tft.setTextSize(2);
+    tft.setTextColor(ILI9341_BLACK, ILI9341_RED);
+    tft.print((char)33);
+  }
+
+  if(block.open == true && block.mine == false){ //daca player a deschis o celula care nu are mina
+    if(block.mines_num == 0){ //daca nu are mine adiacente
+      tft.fillRect(pos_x * 24 + 1, pos_y * 24 + 1, 22, 22, ILI9341_BLACK);
+    }
+    else{
+      tft.fillRect(pos_x * 24 + 1, pos_y * 24 + 1, 22, 22, ILI9341_BLACK);
+      tft.setCursor(24 * pos_x + 1, 24 * pos_y + 1);
+      tft.setTextSize(2);
+      tft.setTextColor(ILI9341_WHITE);
+      tft.print(String(block.mines_num));
+    }
+  }
+
+  if(block.open == true && block.mine == true){ //daca player a deschis o celula care avea o mina
+    tft.fillRect(pos_x * 24 + 1, pos_y * 24 + 1, 22, 22, ILI9341_BLACK);
+    tft.setCursor(24 * pos_x + 1, 24 * pos_y + 1);
+    tft.setTextSize(2);
+    tft.setTextColor(ILI9341_RED, ILI9341_BLACK);
+    tft.print((char)88);
+  }
+}
+```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
