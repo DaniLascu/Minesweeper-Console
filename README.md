@@ -43,6 +43,7 @@ The player starts the game off in the Main Menu. There, he has 2 options: 1.Star
 ![Game_Flow_Diagram](https://github.com/user-attachments/assets/a3c4e45e-c1b3-49ce-b804-bfb6f594c72c)
 ### <ins>Algorithms and Important Code Parts</ins>
 ### Board Generation and fill Algorithm
+``` efwef```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
