@@ -351,12 +351,41 @@ void joystick_logic(){
 }
 
 ```
-This code snippet shows how the joystick is used to chose a difficulty option.<br/>
+<!--This code snippet shows how the joystick is used to chose a difficulty option.<br/>
 Depending on the command provided by the joystick, the TFT LCD displays a **selector** by the shape of a red dor near the currently selected option.<br/>
 When the joystick is pressed the difficulty has been chosen.<br/>
 The red circle is a clear visual cue to the player, showing which difficulty option is currently selected.
 The use of the joystick to cycle through options is intuitive and allows for smooth interaction with the menu.
-The code waits for a button press to start, then uses the joystick to cycle through difficulty options. The selected difficulty is confirmed with the joystick button press, and the game proceeds to the next stage. The display and user interaction are well-managed to ensure an easy and engaging experience.
+The code waits for a button press to start, then uses the joystick to cycle through difficulty options. The selected difficulty is confirmed with the joystick button press, and the game proceeds to the next stage. The display and user interaction are well-managed to ensure an easy and engaging experience.-->
+This code snippet demonstrates how the joystick is used to select a difficulty level in the game. The user interacts with the menu by moving the joystick up and down to navigate between difficulty options ("Easy", "Medium", "Hard"), and presses the joystick button to confirm their selection. The currently selected option is highlighted by a red circle on the display.
+
+Explanation:
+
+Button Press to Start:
+
+When the joystick button is pressed and the "Start" option (start_menu_option == 1) is selected, the game is launched (game_started = 1).
+The screen is cleared (tft.fillRect) and a message asking the player to choose a difficulty is displayed. The options "Easy", "Medium", and "Hard" are shown at specific coordinates on the LCD.
+Difficulty Selection:
+
+A red circle (tft.fillCircle) acts as a selector, indicating the current difficulty option.
+The program enters a while loop that keeps running until a difficulty is selected (difficulty == 0 means not selected yet).
+Inside the loop, the joystick's logic (joystick_logic()) continuously checks for commands (up, down, or button press).
+Joystick Movement:
+
+If the joystick is moved down (COMMAND_DOWN), the cursor moves to the next option. If it's at the last option, it wraps around to the first one.
+Similarly, moving the joystick up (COMMAND_UP) moves the cursor in reverse, wrapping around if necessary.
+Updating the Selector:
+
+As the user moves the joystick, the red circle follows the cursor to show the current selection.
+All previous selectors (blue circles) are erased to avoid overlapping (tft.fillCircle(60, menu_cursor[0], 10, ILI9341_BLUE)), leaving only the red circle to show the active choice.
+Joystick Button Press:
+
+When the joystick button is pressed (joystick_btn), the selection is confirmed.
+Depending on the position of the cursor (menu_joystick_cursor), the corresponding difficulty level is set (difficulty = MINES_EASY, MINES_MEDIUM, or MINES_HARD).
+Starting the Game:
+
+Once a difficulty is chosen, the program exits the selection loop (difficulty != 0), and the game initialization (start_game()) begins.
+
 ```C
  if(joystick_btn == 1 && start_menu_option == 1){ //daca butonul de pe joystick a fost apasat si optiunea = 1(START) dau drumul la joc
       game_started = 1; 
