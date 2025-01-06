@@ -43,7 +43,22 @@ The player starts the game off in the Main Menu. There, he has 2 options: 1.Star
 ![Game_Flow_Diagram](https://github.com/user-attachments/assets/a3c4e45e-c1b3-49ce-b804-bfb6f594c72c)
 ### <ins>Algorithms and Important Code Parts</ins>
 ### Board Generation and fill Algorithm
-``` efwef```
+Every cell of the board is in fact a variable of the Struct type shown below. The struct has 4 attributes, that store the following: 
+- if the cell contains a mine;
+- number of neighbour mines;
+- if the cell is flagged;
+- if the cell is open;
+```arduino
+// struct ce reprezinta o celula din grid
+struct cell{
+  bool mine; //1 daca o bomba se afla in celula; 0 daca nu 
+  uint8_t mines_num; //nr de bombe adiacente
+  bool flaged; //1 daca player-ul a marcat celula ca bomba; 0 altfel
+  bool open; //1 daca player-ul a deschis celula considerand ca nu exista bombe; 0 daca celula esta inca inchisa
+};
+
+struct cell bomb_grid[ROWS][COLUMNS]; 
+```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
