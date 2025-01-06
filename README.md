@@ -93,6 +93,45 @@ void generate_bombs(int difficulty){
   }
 }
 ```
+The first function checks if the current position, the one I am checking at the moment is inside the **boundaries** of the **boar matrix**.
+The second function calculates the number of neighbouring mines of every cell. If the current cell has a mine in it, that that calculation doesn't take place.
+```C
+bool valid_position(int poz_i, int poz_j){ //verifica deca elementul pe care il verific nu a iesit in afara matricei
+  return (poz_i >= 0 && poz_i < ROWS) && (poz_j >= 0 && poz_j < COLUMNS);
+}
+
+
+void calculate_number_of_neighbour_bombs(){
+  int nr = 0; //nr de bombe care invecineaza o celula
+  for(int i = 0; i < ROWS; i++){
+    for(int j = 0; j < COLUMNS; j++){
+      nr = 0;
+      if(bomb_grid[i][j].mine == false){ //daca nu se afla o mina in acea celula
+        if(valid_position(i-1,j-1) && bomb_grid[i-1][j-1].mine == true)
+            nr++;
+        if(valid_position(i-1,j) && bomb_grid[i-1][j].mine == true)
+            nr++;
+        if(valid_position(i-1,j+1) && bomb_grid[i-1][j+1].mine == true)
+            nr++;
+        if(valid_position(i+1,j-1) && bomb_grid[i+1][j-1].mine == true)
+            nr++;
+        if(valid_position(i+1,j) && bomb_grid[i+1][j].mine == true)
+            nr++;
+        if(valid_position(i+1,j+1) && bomb_grid[i+1][j+1].mine == true)
+            nr++;
+        if(valid_position(i,j-1) && bomb_grid[i][j-1].mine == true)
+            nr++;
+        if(valid_position(i,j+1) && bomb_grid[i][j+1].mine == true)
+            nr++;
+
+        if(nr != 0){
+          bomb_grid[i][j].mines_num = nr; //scriu nr de bombe adiacente celului curente
+        }
+      }
+    }
+  }
+}
+```
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
