@@ -51,6 +51,7 @@ Every Cell of the board is in fact a variable of the Struct type shown below. Th
 - if the cell is flagged;
 - if the cell is open;<br/>
 The Cell Grid is a **10x10 matrix of "struct cell"** variables.
+
 ```C
 // struct ce reprezinta o celula din grid
 struct cell{
