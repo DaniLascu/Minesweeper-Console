@@ -538,9 +538,8 @@ Here are some images of the setup:<br/>
 <img src = "https://github.com/user-attachments/assets/94d1b390-0384-4c11-a4ea-4d7441deba5e" width = 600 height = 800>
 
 ## Conclusions
-### Final Conclusion
-Implementing this prject was both fun and difficult. 
-## Source Code and other resources
+Implementing this project was both enjoyable and challenging. The most stressful part was configuring the LCD, which involved finding the right libraries and making them work.( This process took me two full days) Despite these challenges, I enjoyed working on this project. It allowed me to apply all the knowledge I had gained during the laboratory sessions, encompassing both the hardware and software aspects of hardware configuration. By combining this knowledge with my prior programming experience, I was able to create a game that is not only functional but also fun to play.
+<!---## Source Code and other resources--->
 ## Journal
 - The first problem I encountered was the possibility of not having enough memory to run the game, since the current state of the grid must be remembered, the previous state (many variables) and the animations on the LCD must be managed. So I decided to use the ESP32 microcontroller, which offers more RAM than the Arduino UNO, but whose pins operate at 3.3V.
 ## Bibliography/Resources
