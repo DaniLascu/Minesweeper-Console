@@ -48,7 +48,7 @@ Every Cell of the board is in fact a variable of the Struct type shown below. Th
 - number of neighbour mines;
 - if the cell is flagged;
 - if the cell is open;<br/>
-The Cell Grid is a matrix of "struct cell" variables.
+The Cell Grid is a **10x10 matrix of "struct cell"** variables.
 ```C
 // struct ce reprezinta o celula din grid
 struct cell{
@@ -95,6 +95,7 @@ void generate_bombs(int difficulty){
 ```
 The first function checks if the current position, the one I am checking at the moment is inside the **boundaries** of the **board matrix**.
 The second function calculates the number of neighbouring mines of every cell. If the current cell has a mine in it, that that calculation doesn't take place.
+Every time the game starts, after the mines are randomly generated and placed, the second function from below is called.
 ```C
 bool valid_position(int poz_i, int poz_j){ //verifica deca elementul pe care il verific nu a iesit in afara matricei
   return (poz_i >= 0 && poz_i < ROWS) && (poz_j >= 0 && poz_j < COLUMNS);
@@ -132,7 +133,19 @@ void calculate_number_of_neighbour_bombs(){
   }
 }
 ```
-### Some LCD display Functions
+### LCD display Functions & Cursor display logic
+The grid consists of a 10x10 cell matrix. The grid function fills a 240x240 px rectangle with the white color.<br/>
+Then 
+```C
+void grid(){
+  tft.fillRect(0,0,240,240,ILI9341_WHITE);
+  for(int i = 0; i < ROWS; i++){
+    for(int j = 0; j < COLUMNS; j++){
+      tft.drawRect(i * 24, j * 24, 24, 24, ILI9341_BLACK);
+    }
+  }
+}
+```
 These variables are used to keep the position of the cursor on the board.
 ```C
 uint8_t prev_cursor_x = 0;
