@@ -93,7 +93,7 @@ void generate_bombs(int difficulty){
   }
 }
 ```
-The first function checks if the current position, the one I am checking at the moment is inside the **boundaries** of the **boar matrix**.
+The first function checks if the current position, the one I am checking at the moment is inside the **boundaries** of the **board matrix**.
 The second function calculates the number of neighbouring mines of every cell. If the current cell has a mine in it, that that calculation doesn't take place.
 ```C
 bool valid_position(int poz_i, int poz_j){ //verifica deca elementul pe care il verific nu a iesit in afara matricei
