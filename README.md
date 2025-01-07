@@ -523,6 +523,9 @@ void setup(){
 ```
 2. **Intterupts**: as I have already shown in the **Software design - Pushbuttons** section, all three pushbuttons that the project uses, are debounced using intterupts.
 3. **ADC**: as I have already shown in the **Software design - Joystick Movement** section, the joystick makes use of the ADC function of the ESP32 through the **analogRead()** function.
+
+### Final Conclusion
+Implementing this prject was both fun and difficult. 
 ## Source Code and other resources
 ## Journal
 - The first problem I encountered was the possibility of not having enough memory to run the game, since the current state of the grid must be remembered, the previous state (many variables) and the animations on the LCD must be managed. So I decided to use the ESP32 microcontroller, which offers more RAM than the Arduino UNO, but whose pins operate at 3.3V.
