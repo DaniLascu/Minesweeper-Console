@@ -287,7 +287,7 @@ if(flag_button == 1){ //daca s-a apasat butonul de flag
 ```
 ### Joystick Movement
 The joystick generates analog signals based on its position along the X and Y axes. These signals are converted into digital values (ranging from 0 to 4095) using the ESP32's ADC (Analog-to-Digital Converter) pins. The thresholds (LEFT_THRESHOLD, RIGHT_THRESHOLD, UP_THRESHOLD, and DOWN_THRESHOLD) are used to interpret these values and determine the joystick's direction.<br/>
-**Key Steps in Joystick Logic**
+**Key Steps in Joystick Logic**<br/>
 1.Reading Joystick Values<br/>
 The joystick's X and Y positions are read using analogRead:
 ```C
@@ -302,6 +302,23 @@ The program compares value_x and value_y to predefined thresholds:<br/>
 - If value_x > RIGHT_THRESHOLD, the joystick is pushed right.
 - If value_y < UP_THRESHOLD, the joystick is pushed up.
 - If value_y > DOWN_THRESHOLD, the joystick is pushed down.
+<br/>
+3.Command Assignment<br/>
+Based on the thresholds, the program assigns specific commands using bitwise OR operations:
+```C
+if (value_x < LEFT_THRESHOLD){
+      command = command | COMMAND_LEFT;
+    }else if (value_x > RIGHT_THRESHOLD){
+      command = command | COMMAND_RIGHT;
+    }
+
+    // check up/down commands
+    if (value_y < UP_THRESHOLD){
+      command = command | COMMAND_UP;
+    }else if (value_y > DOWN_THRESHOLD){
+      command = command | COMMAND_DOWN;
+    }
+```
 ```C
 //treshold-uri pentru mutarea pozitiei la stanga, la dreapta, sus si jos cu joystick-ul
 #define LEFT_THRESHOLD  1000 
