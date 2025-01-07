@@ -485,7 +485,7 @@ I used the following libraries for my project:
 - [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library): This is the core graphics library for all Adafruit displays, providing a common set of graphics primitives (points, lines, circles, etc.). It needs to be paired with a hardware-specific library like Adafuit_ILI9341 for each display device we carry (to handle the lower-level functions). For this library to work we also need Adafruit Bus IO Library;
 - [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO): This is a helper library to abstract away I2C & SPI transactions and registers. It is useful for abstracting and simplifying interactions with hardware registers, reducing errors and making it easier to read and write data.;
 - [SD](https://github.com/arduino-libraries/SD): The SD library allows for reading from and writing to SD cards. The SD library is used to access SD cards connected to the microcontroller via SPI. It is essential for managing files (e.g., images, data, settings) stored on SD cards.It allows easy reading and writing of data.;
-- SPI: SPI (Serial Peripheral Interface) is the primary protocol used for fast communication with ILI9341 and SD modules.
+- SPI: Serial Peripheral Interface is the primary protocol used for fast communication with ILI9341 and SD modules.
 The standard Arduino SPI library provides an efficient implementation, reducing the complexity of developing a custom solution.;
 
 ## Obtained Results
