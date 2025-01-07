@@ -252,7 +252,7 @@ uint8_t open_button = 0; //stocheaza valoare butonului open
 uint8_t flag_button = 0; //stocheaza valoarea butonului flag
 ```
 Here is the ISR function for the Joystick Button.The debounce time usde is 200 ms.<br/>
-When the button is pressed, if 200ms pass and the button is still pressed, then the ISR function changes the joystic_btn variable's value to 1.<br/>
+When the button is pressed, if 200ms passed from the last intterupt, then there was not noise, then the ISR function changes the joystic_btn variable's value to 1.<br/>
 The other 2 buttons' ISR functions follow the same pattern and are debounced in tha same way.
 ```C
 //variabile pentru debouncing butoane in intreruperi
