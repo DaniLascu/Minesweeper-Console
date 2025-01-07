@@ -409,6 +409,50 @@ void joystick_logic(){
 
 </details>
 
+### *Joystick usage example*
+<details>
+<summary>Click here</summary>
+This code is part of the menu
+```C
+while(joystick_btn == 0){ //mentine meniul afisat pana se apasa o optiune de start joc sau top 10 times
+      joystick_logic(); //interogam comenzile de la joystick
+      switch(command){
+        case COMMAND_DOWN:
+          if(start_menu_option == 1){
+            start_menu_option = 2;
+          }
+          else if(start_menu_option == 2){
+            start_menu_option = 1;
+          }
+          break;
+        case COMMAND_UP:
+          if(start_menu_option == 1){
+            start_menu_option = 2;
+          }
+          else if(start_menu_option == 2){
+            start_menu_option = 1;
+          }
+          break;
+        default:
+          break;
+      }
+
+      tft.fillCircle(100, 145, 10, ILI9341_BLUE);
+      tft.fillCircle(100, 175, 10, ILI9341_BLUE);
+
+      if(start_menu_option == 1){
+        tft.fillCircle(100, 145, 10, ILI9341_RED);
+      }
+      else if(start_menu_option == 2){
+        tft.fillCircle(100, 175, 10, ILI9341_RED);
+      }
+
+      delay(50);
+    }
+
+```
+</details>
+
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
