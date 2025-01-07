@@ -221,7 +221,7 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
 ### Pushbuttons
 All three pushbuttons were debounced using **intterupts**.<br/>
 When pressed, each of the 3 buttons change it's coresponding variable's value to 1.<br/>
-The **menu()** and **start_game()** functions of the program use these variables to check is any of the 3 buttons was pressed.
+The **menu()** and **game_logic()** functions of the program use these variables to check is any of the 3 buttons was pressed.
 ```C
 uint8_t joystick_btn = 0; // valoarea butonului de start 
 uint8_t open_button = 0; //stocheaza valoare butonului open
@@ -265,6 +265,25 @@ Each ISR function is atached to it's specific pins.
 
   pinMode(FLAG_BTN, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(FLAG_BTN), ISR_FLAG, FALLING);
+```
+This is an example of how the game_logic function uses the **flag button**. If the button was pressed during the game, an intterupt is send, which changes the value of **flag_button** to 1.<br/>
+The game_logic checks if that variable is 1 and if that is the case it puts 0 in the flag_button variable, again. Then, if the button was pressed, the currently selected cell is flagged. The flag attribute of that cell becomes **true** and the **cell_draw** function is called for that cell. 
+```C
+if(flag_button == 1){ //daca s-a apasat butonul de flag
+    flag_button = 0;
+
+    if(start_time == 0){ //cronometrarea timpului incepe la prima apasare a unui buton
+      start_time = millis();
+    }
+
+    bomb_grid[cursor_x][cursor_y].flaged = true; //se pune flag-ul pe acea celula
+
+    cell_draw(cursor_x, cursor_y, bomb_grid[cursor_x][cursor_y]);
+
+    if(bomb_grid[cursor_x][cursor_y].mine == true){ //daca chiar se afla o bomba acolo
+      discoverd_bombs++; //incerementez variabila discoverd_bombs
+    }
+  }
 ```
 ### Joystick Movement
 The joystick has 4 **COMMANDS**:
