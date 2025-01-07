@@ -490,6 +490,27 @@ The standard Arduino SPI library provides an efficient implementation, reducing 
 
 ## Obtained Results
 ## Conclusions
+### Laboratory functionalities and their usage in my project
+My project uses the following functionalities, that were presented during the laboratories:
+1. SPI: used for comunicating with both the TFT LCD ILI_9341 and the MicroSD Card. The following code snippet shows the TFT's SPI initialization. The Adafruit_ILI9341 library simplifies the initialization process.
+```C
+// Pin definitions for the ESP32
+#define TFT_CS    5      // Chip Select (CS)
+#define TFT_DC    2      // Data/Command (DC) - GPIO2
+#define TFT_RST   4      // Reset (RST) - GPIO4
+#define TFT_MOSI 23
+#define TFT_MISO 19
+#define TFT_CLK  18
+
+// Create an instance of the display
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+//.......................
+void setup(){
+  tft.begin(); //Initialize the TFT
+  tft.setRotation(3);
+}
+```
+
 ## Source Code and other resources
 ## Journal
 - The first problem I encountered was the possibility of not having enough memory to run the game, since the current state of the grid must be remembered, the previous state (many variables) and the animations on the LCD must be managed. So I decided to use the ESP32 microcontroller, which offers more RAM than the Arduino UNO, but whose pins operate at 3.3V.
