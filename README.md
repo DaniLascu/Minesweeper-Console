@@ -479,6 +479,14 @@ The player will use the joystick's movement to select an option. A red dot will 
 ### Function: game_logic()
 The most important function is **game_logic()**. It constantly reads the values ​​given by the joystick, to update the cursor position. The cursor position identifies the cell on which we are acting. Then, this function checks the variables corresponding to the 3 buttons: open, flag and joystick and updates the state of the game and the screen depending on the player's input.
 
+## Libraries
+I used the following libraries for my project:
+- [Adafruit_ILI9341](https://github.com/adafruit/Adafruit_ILI9341);
+- [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library);
+- [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO);
+- SPI;
+- [SD](https://github.com/arduino-libraries/SD);
+
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
