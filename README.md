@@ -545,3 +545,8 @@ Implementing this project was both enjoyable and challenging. The most stressful
 ## Journal
 - The first problem I encountered was the possibility of not having enough memory to run the game, since the current state of the grid must be remembered, the previous state (many variables) and the animations on the LCD must be managed. So I decided to use the ESP32 microcontroller, which offers more RAM than the Arduino UNO, but whose pins operate at 3.3V.
 ## Bibliography/Resources
+- [ESP32-WROOM-32D datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf);
+- [Adafruit_ILI9341 library](https://github.com/adafruit/Adafruit_ILI9341);
+- [helped me work with SD library](https://docs.arduino.cc/learn/programming/sd-guide/);
+- [video that helped me configure ILI_9341 TFT LCD](https://www.youtube.com/watch?v=rq5yPJbX_uk)
+- [helped me set up the SD - ESP32 connection](https://randomnerdtutorials.com/esp32-microsd-card-arduino/)
