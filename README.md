@@ -525,7 +525,7 @@ void setup(){
 ## Obtained Results
 The result of my implementation is a fully functional game, one that is very similar to the original game!!!<br/>
 Here are some images of the setup:<br/>
-![Setup_2](https://github.com/user-attachments/assets/d8d797e9-4d70-4e74-b86b-c28ca5fd85e7|width = 200)
+![Setup_2](https://github.com/user-attachments/assets/d8d797e9-4d70-4e74-b86b-c28ca5fd85e7 = 250x250)
 ![Setup_3](https://github.com/user-attachments/assets/8289a4b9-a2df-4246-9fee-4290f26c063a)
 ![Setup_4](https://github.com/user-attachments/assets/0015ab13-fc40-44b2-973b-893f68b3db07)
 <br/>And here are some images from different stages in the game:<br/>
