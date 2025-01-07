@@ -412,6 +412,7 @@ void joystick_logic(){
 ### *Joystick usage example*
 <details>
 <summary>Click here</summary>
+  
 This code is part of the menu
 ```C
 while(joystick_btn == 0){ //mentine meniul afisat pana se apasa o optiune de start joc sau top 10 times
