@@ -136,7 +136,7 @@ void calculate_number_of_neighbour_bombs(){
 ### LCD display Functions & Cursor display logic
 The grid consists of a 10x10 cell matrix. The following function displays the initial board,100 white cells, divided by a black grid.<br/>
 The grid function fills a 240x240 px rectangle with the white color.<br/>
-The rectangle is then divided into 100 24x24 px rectangles
+The rectangle is then divided by a grid where each cell is 24x24 px.
 ```C
 void grid(){
   tft.fillRect(0,0,240,240,ILI9341_WHITE);
