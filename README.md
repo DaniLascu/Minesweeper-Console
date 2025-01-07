@@ -415,7 +415,7 @@ void joystick_logic(){
   
 This code is part of the menu. When the player first starts the game he will be displayed the Main Menu.<br/>
 He will have to chose from 2 options: 1.Start; 2.Top 10.<br/>
-The player will use the joystick's movement to select an option. A red dot will visually indicate wichi option the player is currentlly selecting. The red dot selector will move **UP** and **DOWN** based on the command given by the joystick . When the joystock button is pressed, the option selected will be the one that has the red dot pointing to it.
+The player will use the joystick's movement to select an option. A red dot will visually indicate which option the player is currentlly selecting. The red dot selector will move **UP** and **DOWN** based on the command given by the joystick. When the joystock button is pressed, the option selected will be the one that has the red dot pointing to it. The Main Menu option selection runs in a loop. The loop ends when an the player choses an option (when the joysstick button is pressed). 
 ```C
  tft.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT,ILI9341_BLUE);
     tft.setCursor(70, 60);
