@@ -142,6 +142,7 @@ void calculate_number_of_neighbour_bombs(){
 <details>
 
 <summary>Click here</summary>
+
 The grid consists of a 10x10 cell matrix. The following function displays the initial board,100 white cells, divided by a black grid.<br/>
 The grid function fills a 240x240 px rectangle with the white color.<br/>
 The rectangle is then divided by a grid where each cell is 24x24 px.<br/>
@@ -230,6 +231,11 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
 </details>
 
 ### Pushbuttons
+
+<details>
+
+<summary>Click here</summary>
+
 All three pushbuttons were debounced using **intterupts**.<br/>
 When pressed, each of the 3 buttons change it's coresponding variable's value to 1.<br/>
 The **menu()** and **game_logic()** functions of the program use these variables to check is any of the 3 buttons was pressed.
@@ -296,7 +302,15 @@ if(flag_button == 1){ //daca s-a apasat butonul de flag
     }
   }
 ```
+
+</details>
+
 ### Joystick Movement
+
+<details>
+
+<summary>Click here</summary>
+
 The joystick generates analog signals based on its position along the X and Y axes. These signals are converted into digital values (ranging from 0 to 4095) using the ESP32's ADC (Analog-to-Digital Converter) pins. The thresholds (LEFT_THRESHOLD, RIGHT_THRESHOLD, UP_THRESHOLD, and DOWN_THRESHOLD) are used to interpret these values and determine the joystick's direction.<br/>
 **Key Steps in Joystick Logic**<br/>
 1.Reading Joystick Values<br/>
@@ -390,6 +404,9 @@ void joystick_logic(){
   }
 }
 ```
+
+</details>
+
 ## Obtained Results
 ## Conclusions
 ## Source Code and other resources
