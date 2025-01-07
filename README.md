@@ -168,7 +168,7 @@ This function displays every cell base on the state of it's attributes:
 - if the cell is opend the number of neighbouring mines will be displayed (if there are none, the cell will be black)
 - if the cell is flagged, it will have a flag symbol drawn on it
 - if the player opens a flagged cell, the cell will lose it's flag but not open
-- if the player opens a cell that has a mine, the cell will be black with a red 'X' in the middle
+- if the player opens a cell that has a mine, the cell will be black with a red 'X' in the middle.<br/>
 Every time a cell's state is changed: the player opens, or puts a flag on the cell; the cell_draw function is called for that specific cell. 
 ```C
 void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
@@ -219,7 +219,15 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
 }
 ```
 ### Pushbuttons
-All three pushbuttons were debounced using **intterupts**.
+All three pushbuttons were debounced using **intterupts**.<br/>
+When pressed, each of the 3 buttons change it's coresponding variable's value to 1.<br/>
+The **menu()** and **start_game()** functions of the program use these variables to check is any of the 3 buttons was pressed.
+```C
+uint8_t joystick_btn = 0; // valoarea butonului de start 
+uint8_t open_button = 0; //stocheaza valoare butonului open
+uint8_t flag_button = 0; //stocheaza valoarea butonului flag
+```
+The debounce time is 200 ms.
 ```C
 //variabile pentru debouncing butoane in intreruperi
 volatile unsigned long last_interrupt_time_start_btn = 0;
@@ -294,6 +302,7 @@ void IRAM_ATTR ISR_FLAG() { // se trimite o intrerupere de fiecare data cand est
   
 }
 ```
+The intterupts are attached to their specific pins.
 ```C
   pinMode(SW_PIN, INPUT_PULLUP); //pushbutton-ul de pe joystick
   attachInterrupt(digitalPinToInterrupt(SW_PIN), ISR_START, FALLING); //se trimite o intrerupere de fiecare data cand este apasat butonul de start
