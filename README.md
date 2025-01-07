@@ -523,12 +523,12 @@ void setup(){
 3. **ADC**: as I have already shown in the **Software design - Joystick Movement** section, the joystick makes use of the ADC function of the ESP32 through the **analogRead()** function.
 
 ## Obtained Results
-The result of my implementation is a fully functional game, one that is very similar to the original game!!!
-Here are some images of the setup:
-![Setup_2](https://github.com/user-attachments/assets/d8d797e9-4d70-4e74-b86b-c28ca5fd85e7)
+The result of my implementation is a fully functional game, one that is very similar to the original game!!!<br/>
+Here are some images of the setup:<br/>
+![Setup_2](https://github.com/user-attachments/assets/d8d797e9-4d70-4e74-b86b-c28ca5fd85e7|width = 200)
 ![Setup_3](https://github.com/user-attachments/assets/8289a4b9-a2df-4246-9fee-4290f26c063a)
 ![Setup_4](https://github.com/user-attachments/assets/0015ab13-fc40-44b2-973b-893f68b3db07)
-And here are some images from different stages in the game:
+<br/>And here are some images from different stages in the game:<br/>
 ![Game_1](https://github.com/user-attachments/assets/36e432c9-e0d3-446b-887c-483bd38537a3)
 ![Game_2](https://github.com/user-attachments/assets/1a5aaf5c-fb91-4b18-b858-ef0cbf28722f)
 ![Game_3](https://github.com/user-attachments/assets/7be293d4-241d-4214-9ac5-6e9a5414c018)
