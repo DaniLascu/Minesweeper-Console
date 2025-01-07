@@ -529,13 +529,13 @@ Here are some images of the setup:<br/>
 <img src = "https://github.com/user-attachments/assets/8289a4b9-a2df-4246-9fee-4290f26c063a" width =680 height = 510>
 <img src = "https://github.com/user-attachments/assets/0015ab13-fc40-44b2-973b-893f68b3db07"  width =680 height = 510>
 <br/>And here are some images from different stages in the game:<br/>
-<img src = "https://github.com/user-attachments/assets/36e432c9-e0d3-446b-887c-483bd38537a3" width = 300 height = 400>
-<img src = "https://github.com/user-attachments/assets/1a5aaf5c-fb91-4b18-b858-ef0cbf28722f" width = 300 height = 400>
-![Game_3](https://github.com/user-attachments/assets/7be293d4-241d-4214-9ac5-6e9a5414c018)
-![Game_4](https://github.com/user-attachments/assets/855bca9d-6921-4ca5-90c5-e01bd7d0ce75)
-![Game_5](https://github.com/user-attachments/assets/e8353232-a9f4-4332-abf3-18d2cc006b48)
-![Game_6](https://github.com/user-attachments/assets/3d544157-03d0-42bc-bea0-03aed2131659)
-![Game_7](https://github.com/user-attachments/assets/94d1b390-0384-4c11-a4ea-4d7441deba5e)
+<img src = "https://github.com/user-attachments/assets/36e432c9-e0d3-446b-887c-483bd38537a3" width = 600 height = 800>
+<img src = "https://github.com/user-attachments/assets/1a5aaf5c-fb91-4b18-b858-ef0cbf28722f" width = 600 height = 800>
+<img src = "https://github.com/user-attachments/assets/7be293d4-241d-4214-9ac5-6e9a5414c018" width = 600 height = 800>
+<img src = "https://github.com/user-attachments/assets/855bca9d-6921-4ca5-90c5-e01bd7d0ce75" width = 600 height = 800>
+<img src = "https://github.com/user-attachments/assets/e8353232-a9f4-4332-abf3-18d2cc006b48" width = 600 height = 800>
+<img src = "https://github.com/user-attachments/assets/3d544157-03d0-42bc-bea0-03aed2131659" width = 600 height = 800>
+<img src = "https://github.com/user-attachments/assets/94d1b390-0384-4c11-a4ea-4d7441deba5e" width = 600 height = 800>
 
 ## Conclusions
 ### Final Conclusion
