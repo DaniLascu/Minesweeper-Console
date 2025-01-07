@@ -492,7 +492,7 @@ The standard Arduino SPI library provides an efficient implementation, reducing 
 ## Conclusions
 ### Laboratory functionalities and their usage in my project
 My project uses the following functionalities, that were presented during the laboratories:
-1. SPI: used for comunicating with both the TFT LCD ILI_9341 and the MicroSD Card. The following code snippet shows the TFT's SPI initialization. The Adafruit_ILI9341 library simplifies the initialization process.
+1. **SPI**: used for comunicating with both the TFT LCD ILI_9341 and the MicroSD Card. The project uses the VSPI interface of the microcontroller. The LCD and SD card share the MOSI, MISO and CLK lines while having separate CS lines. The following code snippets shows the TFT's SPI initialization and SD card initialization. The Adafruit_ILI9341 library simplifies the initialization process.
 ```C
 // Pin definitions for the ESP32
 #define TFT_CS    5      // Chip Select (CS)
@@ -502,12 +502,22 @@ My project uses the following functionalities, that were presented during the la
 #define TFT_MISO 19
 #define TFT_CLK  18
 
+#define SD_CS    16
+
 // Create an instance of the display
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
-//.......................
+--------------------------------------------------------------------------
 void setup(){
   tft.begin(); //Initialize the TFT
   tft.setRotation(3);
+  tft.fillScreen(ILI9341_RED);
+  tft.fillCircle(60, 105, 10, ILI9341_BLUE);
+  // Initialize SD card
+  if (!SD.begin(SD_CS)) {
+    Serial.println("SD card initialization failed!");
+    return;
+  }
+  Serial.println("SD card initialized.");
 }
 ```
 
