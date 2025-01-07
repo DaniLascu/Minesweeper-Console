@@ -60,7 +60,7 @@ struct cell{
 
 struct cell bomb_grid[ROWS][COLUMNS]; 
 ```
-Every time the **Game** is **STARTED**, the program must generate the **Mine Board**. As it is shown at first, every cell is closed, unflagged, and has 0 mines.
+Every time the **Game** is **STARTED**, the program must generate the **Mine Grid**. As it is shown at first, every cell is closed, unflagged, and has 0 mines.
 The flaged and open attributes are used when displaying the grid. Then this function randomly generates and places mines. The number of mines depends on the difficulty that was selected.
 The function also checks that a mine is not already present in the cell it wants to place the new mine in.
 ```C
