@@ -139,6 +139,9 @@ void calculate_number_of_neighbour_bombs(){
 </details>
 
 ### LCD display Functions & Cursor display logic
+<details>
+
+<summary>Click here</summary>
 The grid consists of a 10x10 cell matrix. The following function displays the initial board,100 white cells, divided by a black grid.<br/>
 The grid function fills a 240x240 px rectangle with the white color.<br/>
 The rectangle is then divided by a grid where each cell is 24x24 px.<br/>
@@ -223,6 +226,9 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
   }
 }
 ```
+
+</details>
+
 ### Pushbuttons
 All three pushbuttons were debounced using **intterupts**.<br/>
 When pressed, each of the 3 buttons change it's coresponding variable's value to 1.<br/>
