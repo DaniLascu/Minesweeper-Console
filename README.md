@@ -413,9 +413,27 @@ void joystick_logic(){
 <details>
 <summary>Click here</summary>
   
-This code is part of the menu
+This code is part of the menu. When the player first starts the game he will be displayed the Main Menu.<br/>
+He will have to chose from 2 options: 1.Start; 2.Top 10.<br/>
+The player will use the joystick's movement to select an option. A red dot will visually indicate wichi option the player is currentlly selecting. The red dot selector will move **UP** and **DOWN** based on the command given by the joystick . When the joystock button is pressed, the option selected will be the one that has the red dot pointing to it.
 ```C
-while(joystick_btn == 0){ //mentine meniul afisat pana se apasa o optiune de start joc sau top 10 times
+ tft.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT,ILI9341_BLUE);
+    tft.setCursor(70, 60);
+    tft.setTextSize(3);
+    tft.print("Minesweeper");
+
+    tft.setCursor(49, 100);
+    tft.setTextSize(2);
+    tft.print("Apasa butonul pentru:");
+    tft.setCursor(120, 140);
+    tft.print("START");
+    tft.setCursor(115, 170);
+    tft.print("Top 10");
+    tft.fillCircle(100, 145, 10, ILI9341_RED);
+
+    //vom avea de ales intrea a incepe jocul si a vizualiza cele mai mairi 10 scoruri
+
+    while(joystick_btn == 0){ //mentine meniul afisat pana se apasa o optiune de start joc sau top 10 times
       joystick_logic(); //interogam comenzile de la joystick
       switch(command){
         case COMMAND_DOWN:
@@ -450,7 +468,6 @@ while(joystick_btn == 0){ //mentine meniul afisat pana se apasa o optiune de sta
 
       delay(50);
     }
-
 ```
 </details>
 
