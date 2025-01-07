@@ -168,7 +168,7 @@ This function displays every cell base on the state of it's attributes:
 - if the cell is opend the number of neighbouring mines will be displayed (if there are none, the cell will be black)
 - if the cell is flagged, it will have a flag symbol drawn on it
 - if the player opens a flagged cell, the cell will lose it's flag but not open
-- if the player opens a cell that has a mine, the cell will be black with a red 'X' in the middle<br/>
+- if the player opens a cell that has a mine, the cell will be black with a red 'X' in the middle
 Every time a cell's state is changed: the player opens, or puts a flag on the cell; the cell_draw function is called for that specific cell. 
 ```C
 void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
