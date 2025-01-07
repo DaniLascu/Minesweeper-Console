@@ -305,6 +305,7 @@ The program compares value_x and value_y to predefined thresholds:<br/>
 <br/>
 3.Command Assignment<br/>
 Based on the thresholds, the program assigns specific commands using bitwise OR operations:
+
 ```C
 if (value_x < LEFT_THRESHOLD){
       command = command | COMMAND_LEFT;
@@ -319,6 +320,7 @@ if (value_x < LEFT_THRESHOLD){
       command = command | COMMAND_DOWN;
     }
 ```
+Here is the whole joystick logic:
 ```C
 //treshold-uri pentru mutarea pozitiei la stanga, la dreapta, sus si jos cu joystick-ul
 #define LEFT_THRESHOLD  1000 
