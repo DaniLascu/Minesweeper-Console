@@ -44,7 +44,7 @@ The player starts the game off in the Main Menu. There, he has 2 options: 1.Star
 ### <ins>Algorithms and Implemented Functions</ins>
 <details>
   
-<summary> ### Board Generation and fill Algorithm </summary>
+<summary>Board Generation and fill Algorithm </summary>
 Every Cell of the board is in fact a variable of the Struct type shown below. The struct has 4 attributes, that store the following: 
 - if the cell contains a mine;
 - number of neighbour mines;
