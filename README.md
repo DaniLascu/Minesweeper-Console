@@ -286,19 +286,22 @@ if(flag_button == 1){ //daca s-a apasat butonul de flag
   }
 ```
 ### Joystick Movement
-The joystick has 4 **COMMANDS**:
-- Up
-- Down
-- Left
-- Right
-<br/>
-The code snippet defines a set of threshold values and commands to interpret joystick movements based on ADC (Analog-to-Digital Converter) readings.<br/>
-Thresholds are numeric boundaries used to determine the direction of joystick movement based on ADC readings.<br/>
-The commands are symbolic constants used to represent joystick movements in code. Each command is assigned a unique hexadecimal value.<br/>
-The joystick's position is captured by reading values from the ADC pin.
-The ADC value is compared to the defined thresholds (LEFT_THRESHOLD, RIGHT_THRESHOLD, UP_THRESHOLD, and DOWN_THRESHOLD).
-The command are then used in the game logic.
+The joystick generates analog signals based on its position along the X and Y axes. These signals are converted into digital values (ranging from 0 to 4095) using the ESP32's ADC (Analog-to-Digital Converter) pins. The thresholds (LEFT_THRESHOLD, RIGHT_THRESHOLD, UP_THRESHOLD, and DOWN_THRESHOLD) are used to interpret these values and determine the joystick's direction.<br/>
+**Key Steps in Joystick Logic**
+1.Reading Joystick Values<br/>
+The joystick's X and Y positions are read using analogRead:
+```C
+value_x = analogRead(VRX_PIN);
+value_y = analogRead(VRY_PIN);
+```
+These values represent the position of the joystick along the X and Y axes. The neutral (centered) position usually gives values near the middle of the range (around 2048).<br/>
+2.Threshold Comparison<br/>
+The program compares value_x and value_y to predefined thresholds:<br/>
 
+- If value_x < LEFT_THRESHOLD, the joystick is pushed left.
+- If value_x > RIGHT_THRESHOLD, the joystick is pushed right.
+- If value_y < UP_THRESHOLD, the joystick is pushed up.
+- If value_y > DOWN_THRESHOLD, the joystick is pushed down.
 ```C
 //treshold-uri pentru mutarea pozitiei la stanga, la dreapta, sus si jos cu joystick-ul
 #define LEFT_THRESHOLD  1000 
@@ -311,10 +314,18 @@ The command are then used in the game logic.
 #define COMMAND_RIGHT  0x02
 #define COMMAND_UP     0x04
 #define COMMAND_DOWN   0x08
-```
 
-This is the function that is tasked with determining the appropriate joystick command.
-```C
+#define JOYSTICK_READ_PERIOD 150 //valorile de pe joystick se citesc la o anumita perioada
+
+
+int value_x = 0; // to store the X-axis value
+int value_y = 0; // to store the Y-axis value
+
+uint8_t command = COMMAND_NO; //comanda venita de la joystick
+
+unsigned long last_joystick_read = 0;
+unsigned long joystick_read;
+
 void joystick_logic(){
 
   joystick_read = millis();
@@ -348,112 +359,6 @@ void joystick_logic(){
     last_joystick_read = joystick_read;
   }
 }
-
-```
-<!--This code snippet shows how the joystick is used to chose a difficulty option.<br/>
-Depending on the command provided by the joystick, the TFT LCD displays a **selector** by the shape of a red dor near the currently selected option.<br/>
-When the joystick is pressed the difficulty has been chosen.<br/>
-The red circle is a clear visual cue to the player, showing which difficulty option is currently selected.
-The use of the joystick to cycle through options is intuitive and allows for smooth interaction with the menu.
-The code waits for a button press to start, then uses the joystick to cycle through difficulty options. The selected difficulty is confirmed with the joystick button press, and the game proceeds to the next stage. The display and user interaction are well-managed to ensure an easy and engaging experience.-->
-This code snippet demonstrates how the joystick is used to select a difficulty level in the game. The user interacts with the menu by moving the joystick up and down to navigate between difficulty options ("Easy", "Medium", "Hard"), and presses the joystick button to confirm their selection. The currently selected option is highlighted by a red circle on the display.
-
-Explanation:
-
-Button Press to Start:
-
-When the joystick button is pressed and the "Start" option (start_menu_option == 1) is selected, the game is launched (game_started = 1).
-The screen is cleared (tft.fillRect) and a message asking the player to choose a difficulty is displayed. The options "Easy", "Medium", and "Hard" are shown at specific coordinates on the LCD.
-Difficulty Selection:
-
-A red circle (tft.fillCircle) acts as a selector, indicating the current difficulty option.
-The program enters a while loop that keeps running until a difficulty is selected (difficulty == 0 means not selected yet).
-Inside the loop, the joystick's logic (joystick_logic()) continuously checks for commands (up, down, or button press).
-Joystick Movement:
-
-If the joystick is moved down (COMMAND_DOWN), the cursor moves to the next option. If it's at the last option, it wraps around to the first one.
-Similarly, moving the joystick up (COMMAND_UP) moves the cursor in reverse, wrapping around if necessary.
-Updating the Selector:
-
-As the user moves the joystick, the red circle follows the cursor to show the current selection.
-All previous selectors (blue circles) are erased to avoid overlapping (tft.fillCircle(60, menu_cursor[0], 10, ILI9341_BLUE)), leaving only the red circle to show the active choice.
-Joystick Button Press:
-
-When the joystick button is pressed (joystick_btn), the selection is confirmed.
-Depending on the position of the cursor (menu_joystick_cursor), the corresponding difficulty level is set (difficulty = MINES_EASY, MINES_MEDIUM, or MINES_HARD).
-Starting the Game:
-
-Once a difficulty is chosen, the program exits the selection loop (difficulty != 0), and the game initialization (start_game()) begins.
-
-```C
- if(joystick_btn == 1 && start_menu_option == 1){ //daca butonul de pe joystick a fost apasat si optiunea = 1(START) dau drumul la joc
-      game_started = 1; 
-      joystick_btn = 0; //fac din nou valoarea joystick_btn 0, pentru a putea verifica din nou daca 
-                        //butonul a fost apasat, deoarece a fost facuta 1 in intrerupere
-
-      tft.fillRect(0,0,DISPLAY_WIDTH,DISPLAY_HEIGHT,ILI9341_BLUE); //jucatorul este rugat sa aleaga dificultatea
-      tft.setCursor(70, 60);
-      tft.setTextSize(2);
-      tft.print("Dificultate");
-
-      tft.setCursor(80, 100);
-      tft.print("Usor");
-      tft.setCursor(80, 120);
-      tft.print("Mediu");
-      tft.setCursor(80, 140);
-      tft.print("Greu");
-
-      tft.fillCircle(60, menu_cursor[menu_joystick_cursor], 10, ILI9341_RED); //selectorul este un cerc rosu
-
-      while(difficulty == 0){ //se selecteaza dificultatea cu ajutorul joystick-ului
-        //cat timp difficulty = 0 inseamna ca nu s-a selectat inca dificultatea. se asteapta pana este selectata
-        joystick_logic(); //se citeste in continuu comanda data de joystick
-
-        if(command == COMMAND_DOWN){ //se schimba cursorul de pe ecran in functie de joystick
-          if(menu_joystick_cursor == 2){
-            menu_joystick_cursor = 0;
-          }
-          else{
-            menu_joystick_cursor ++; 
-          }
-        }
-
-        if(command == COMMAND_UP){
-          if(menu_joystick_cursor == 0){
-            menu_joystick_cursor = 2;
-          }
-          else{
-            menu_joystick_cursor --; 
-          }
-        }
-        tft.fillCircle(60, menu_cursor[0], 10, ILI9341_BLUE);
-        tft.fillCircle(60, menu_cursor[1], 10, ILI9341_BLUE);
-        tft.fillCircle(60, menu_cursor[2], 10, ILI9341_BLUE);
-        tft.fillCircle(60, menu_cursor[menu_joystick_cursor], 10, ILI9341_RED);
-        delay(50); //se afiseaza pe ecran selectorul la dificultatea aleasa cu ajutorul joystick-ului
-
-        if(joystick_btn){ //daca a fost apasat butonul de pe joystick, s-a alaes dificultatea selectata
-          joystick_btn = 0; //redevine 0 altfel la inceperea jocului intre in meniul de pauza
-          switch(menu_joystick_cursor){ //in functie de dificulattea selectata, variabila difficulty va stoca nr de mine corespunzator
-            case 0:
-              difficulty = MINES_EASY;
-              break;
-            case 1:
-              difficulty = MINES_MEDIUM;
-              break;
-            case 2:
-              difficulty = MINES_HARD;
-              break;
-            default:
-              break;
-          }
-        }
-      }
-    //dupa ce s-a ales dificultatea generez animatia de start a jocului si construiesc grid-ul
-      if(game_started == 1){
-        start_game();
-      }
-    }
 ```
 ## Obtained Results
 ## Conclusions
