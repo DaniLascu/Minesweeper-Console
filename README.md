@@ -42,7 +42,7 @@ I used PlatformIO IDE for VSCode.
 The player starts the game off in the Main Menu. There, he has 2 options: 1.Start Game; 2.Top 10 Times. The player uses the joystick in order to chose one option. If the player choses Top 10 Times, he will be displayed the Top 10 lowest game solve times. If the player presses the joystick button again he will be brought back to the Main Menu. If the player choses Start Game, he will be then asked to chose the difficulty. The difficulty is selected using the joystick and the joystick button. After the difficulty is selected the game starts. To the left of the screen the time that has passed is displayed, being incremented every second. If the player presses the joystick button again during the play time, the game will be paused. The player will be prompted to chose to Resume or to Quit the Game. If he choses to quit he will be brought back to the Main Menu. If he choses Resume, he will be brought back to the game. The time counter pauses during pause time. The player uses other 2 buttons during the game, one to open a cell that he belives is empty and the other to flag a cell he thinks has a mine inside. If the player opens a cell that contains a mine, he will lose the game and will be brought back to the main menu. If the player celars all mines, he WON! If he has a time in Top 10 Times, he will be prompted for his name. Then he is brought back to the Main Menu.
 ![Game_Flow_Diagram](https://github.com/user-attachments/assets/a3c4e45e-c1b3-49ce-b804-bfb6f594c72c)
 ### <ins>Algorithms and Implemented Functions</ins>
-### Board Generation and fill Algorithm 
+### * *Board Generation and fill Algorithm* *  
 <details>
 <summary>Click here</summary>
 Every Cell of the board is in fact a variable of the Struct type shown below. The struct has 4 attributes, that store the following:
@@ -140,7 +140,7 @@ void calculate_number_of_neighbour_bombs(){
 ```
 </details>
 
-### LCD display Functions & Cursor display logic
+### * *LCD display Functions & Cursor display logic* *
 <details>
 
 <summary>Click here</summary>
@@ -232,7 +232,7 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
 
 </details>
 
-### Pushbuttons
+### * *Pushbuttons* *
 
 <details>
 
@@ -307,7 +307,7 @@ if(flag_button == 1){ //daca s-a apasat butonul de flag
 
 </details>
 
-### Joystick Movement
+### * *Joystick Movement* *
 
 <details>
 
