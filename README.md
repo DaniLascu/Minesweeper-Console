@@ -489,8 +489,6 @@ I used the following libraries for my project:
 - SPI: Serial Peripheral Interface is the primary protocol used for fast communication with ILI9341 and SD modules.
 The standard Arduino SPI library provides an efficient implementation, reducing the complexity of developing a custom solution.;
 
-## Obtained Results
-## Conclusions
 ### Laboratory functionalities and their usage in my project
 My project uses the following functionalities, that were presented during the laboratories:
 1. **SPI**: used for comunicating with both the TFT LCD ILI_9341 and the MicroSD Card. The project uses the VSPI interface of the microcontroller. The LCD and SD card share the MOSI, MISO and CLK lines while having separate CS lines. The following code snippets shows the TFT's SPI initialization and SD card initialization. The Adafruit_ILI9341 library simplifies the initialization process.
@@ -524,6 +522,8 @@ void setup(){
 2. **Intterupts**: as I have already shown in the **Software design - Pushbuttons** section, all three pushbuttons that the project uses, are debounced using intterupts.
 3. **ADC**: as I have already shown in the **Software design - Joystick Movement** section, the joystick makes use of the ADC function of the ESP32 through the **analogRead()** function.
 
+## Obtained Results
+## Conclusions
 ### Final Conclusion
 Implementing this prject was both fun and difficult. 
 ## Source Code and other resources
