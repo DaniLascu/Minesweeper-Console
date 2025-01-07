@@ -484,8 +484,8 @@ I used the following libraries for my project:
 - [Adafruit_ILI9341](https://github.com/adafruit/Adafruit_ILI9341);
 - [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library);
 - [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO);
-- SPI;
 - [SD](https://github.com/arduino-libraries/SD);
+- SPI;
 
 ## Obtained Results
 ## Conclusions
