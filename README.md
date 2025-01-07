@@ -136,7 +136,8 @@ void calculate_number_of_neighbour_bombs(){
 ### LCD display Functions & Cursor display logic
 The grid consists of a 10x10 cell matrix. The following function displays the initial board,100 white cells, divided by a black grid.<br/>
 The grid function fills a 240x240 px rectangle with the white color.<br/>
-The rectangle is then divided by a grid where each cell is 24x24 px.
+The rectangle is then divided by a grid where each cell is 24x24 px.<br/>
+The function below is called every time the games starts or the player resumes the game from Pause.
 ```C
 void grid(){
   tft.fillRect(0,0,240,240,ILI9341_WHITE);
@@ -154,7 +155,9 @@ uint8_t prev_cursor_y = 0;
 uint8_t cursor_x = 0;
 uint8_t cursor_y = 0;
 ```
-When the cursor is moved, the old position of the cursor is erased
+The cell that the cursor points to has **RED** margins instead fo black ones.<br/>
+When the cursor is moved to a new position, the old position of the cursor is erased.<br/>
+The margins of the cell that the cursor previously pointed at become black again.
 ```C
 void draw_cursor(){
   tft.drawRect(prev_cursor_x * 24, prev_cursor_y * 24, 24, 24, ILI9341_BLACK); //face marginile vechii casete negre
