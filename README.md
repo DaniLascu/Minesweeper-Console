@@ -238,6 +238,10 @@ void cell_draw(uint8_t pos_x, uint8_t pos_y, struct cell block){
 
 <summary>Click here</summary>
 
+This projects uses 3 **Pushbuttons**:
+- Open: for opening a cell that the player belives is emplty;
+- Flag: for flagging a cell the player think contains a bomb;
+- Joystick button: used in the **Menu interface and Pause interfeca**;
 All three pushbuttons were debounced using **intterupts**.<br/>
 When pressed, each of the 3 buttons change it's coresponding variable's value to 1.<br/>
 The **menu()** and **game_logic()** functions of the program use these variables to check is any of the 3 buttons was pressed.
