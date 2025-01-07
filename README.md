@@ -538,7 +538,7 @@ Here are some images of the setup:<br/>
 <img src = "https://github.com/user-attachments/assets/94d1b390-0384-4c11-a4ea-4d7441deba5e" width = 600 height = 800>
 
 <br/>Functionality video:<br/>
-[![Minesweeper](https://img.youtube.com/vi/ydI0NbTCmHw&t=38s/0.jpg)](https://www.youtube.com/watch?v=ydI0NbTCmHw&t=38s)
+[![Minesweeper](https://img.youtube.com/vi/ydI0NbTCmHw/0.jpg)](https://www.youtube.com/watch?v=ydI0NbTCmHw)
 ## Conclusions
 Implementing this project was both enjoyable and challenging. The most stressful part was configuring the LCD, which involved finding the right libraries and making them work.( This process took me two full days) Despite these challenges, I enjoyed working on this project. It allowed me to apply all the knowledge I had gained during the laboratory sessions, encompassing both the hardware and software aspects of hardware configuration. By combining this knowledge with my prior programming experience, I was able to create a game that is not only functional but also fun to play.
 <!---## Source Code and other resources--->
