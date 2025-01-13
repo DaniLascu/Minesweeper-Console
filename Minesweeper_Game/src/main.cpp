@@ -566,14 +566,14 @@ void read_solve_times() {
     int index = 0;
     while (file.available() && index < 10) {
       String line = file.readStringUntil('\n');
-      int commaIndex = line.indexOf(',');
-      if (commaIndex != -1) {
-        String name = line.substring(0, commaIndex);
-        int time = line.substring(commaIndex + 1).toInt();
+      int comma_index = line.indexOf(','); // pozitia in care se afla virgula in linie
+      if (comma_index != -1) {
+        String name = line.substring(0, comma_index); //ce este pana in virgula e numele
+        int time = line.substring(comma_index + 1).toInt(); //ce este dupa este timpul, se converteste timpul la int
         
-        strncpy(records[index].name, name.c_str(), 3);  // Copy name
-        records[index].name[3] = '\0';                 // Null-terminate
-        records[index].time = time;                    // Save time
+        strncpy(records[index].name, name.c_str(), 3);  // Copiere nume in records
+        records[index].name[3] = '\0';                 // Se adauga '\0'
+        records[index].time = time;                    // Se salveaza si timpul
         index++;
       }
     }
@@ -585,22 +585,22 @@ void read_solve_times() {
 
 
 void save_solve_time(const char* new_name, int new_time) {
-  // Insert the new record into the correct position
+  // Insereaza noua inregistrare la pozitia corecta in records
   for (int i = 0; i < 10; i++) {
     if (new_time < records[i].time) {
-      // Shift down remaining records
+      // Shift down inregistrarile ramase
       for (int j = 9; j > i; j--) {
         records[j] = records[j-1];
       }
-      // Insert new record
+      // Inseram noua inregistrare in records
       strncpy(records[i].name, new_name, 3);
-      records[i].name[3] = '\0'; // Null-terminate
+      records[i].name[3] = '\0'; // Null-terminator
       records[i].time = new_time;
       break;
     }
   }
 
-  // Save the updated records to the SD card
+  //Salvare timpi updatati pe cardul SD
   File file = SD.open("/times.txt", FILE_WRITE);
   if (file) {
     for (int i = 0; i < 10; i++) {
