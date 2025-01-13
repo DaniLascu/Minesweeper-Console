@@ -411,8 +411,8 @@ void timer_display(unsigned long start_time){
 char new_name[3]; //variabila in care se stocheaza numele introdus
 
 struct Record {
-  char name[4];  // 3 letters + null terminator
-  int time;      // Solve time in milliseconds
+  char name[4];  // 3 litere+ null terminator
+  int time;      // Timp rezolvare in millisecunde
 };
 
 Record records[10] = {{"---", 1200000}, {"---", 1200000}, {"---", 1200000}, {"---", 1200000}, {"---", 1200000},
