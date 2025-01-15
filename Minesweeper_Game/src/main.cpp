@@ -6,7 +6,7 @@
 #include <SD.h>
 #include <FS.h>
 
-// Pin definitions for the ESP32
+// Definirea Pinilor de pe ESP32
 #define TFT_CS    5      // Chip Select (CS)
 #define TFT_DC    2      // Data/Command (DC) - GPIO2
 #define TFT_RST   4      // Reset (RST) - GPIO4
@@ -14,23 +14,22 @@
 #define TFT_MISO 19
 #define TFT_CLK  18
 
-//Chip Select for SD card
+//Chip Select pentru card SD
 #define SD_CS    16
-#define SPEAKER_PIN 25 //DAC output pin for audio
 
 #define DISPLAY_WIDTH  320
 #define DISPLAY_HEIGHT 240
 #define TFT_WIDTH  320
 #define TFT_HEIGHT 240
 
-// Create an instance of the display
+// Creaza o instanta a display-ului
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
 
 //-----------------------------------Joystick si butoane------------------------------------------
-#define VRX_PIN  39 // ESP32 pin GPIO39 (ADC3) connected to VRX pin
-#define VRY_PIN  36 // ESP32 pin GPIO36 (ADC0) connected to VRY pin
-#define SW_PIN   32 // ESP32 pin GPIO32 connected to SW  pin; butonul de start stop 
+#define VRX_PIN  39 // ESP32: pin GPIO39 (ADC3) conectat la pin VRX
+#define VRY_PIN  36 // ESP32: pin GPIO36 (ADC0) conectat la pin VRY
+#define SW_PIN   32 // ESP32: pin GPIO32 conectat la pin SW; butonul de start stop 
 
 #define OPEN_BTN 27 //butonul care deschide o celula 
 #define FLAG_BTN 33 //butonul care pune flag pe o celula
@@ -47,11 +46,11 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 #define COMMAND_UP     0x04
 #define COMMAND_DOWN   0x08
 
-#define JOYSTICK_READ_PERIOD 150 //valorile de pe joystick se citesc la o anumita perioada
+#define JOYSTICK_READ_PERIOD 150 //valorile de pe joystick se citesc la o anumita perioada; cu o anumita frecventa
 
 
-int value_x = 0; // to store the X-axis value
-int value_y = 0; // to store the Y-axis value
+int value_x = 0; // stocheaza valoare de pe axa-X
+int value_y = 0; // stocheaza valoare de pe axa-Y
 uint8_t joystick_btn = 0; // valoarea butonului de start 
 uint8_t open_button = 0; //stocheaza valoare butonului open
 uint8_t flag_button = 0; //stocheaza valoarea butonului flag
@@ -107,8 +106,8 @@ volatile unsigned long interrupt_time_flag_btn = 0;
 
 //ISR pentru apasarea butonului de pe joystick
 void IRAM_ATTR ISR_START() { // se trimite o intrerupere de fiecare data cand este apasat butonul de start
-  // Check status of switch
-  // Toggle on variable if button pressed
+  // Verifica statusul butonului
+  // Schimba valoare variabilei corespunzatoare butonului in 1
   
   interrupt_time_start_btn = millis();//retine momentul la care s-a produs intreruperea curenta
 
@@ -116,7 +115,6 @@ void IRAM_ATTR ISR_START() { // se trimite o intrerupere de fiecare data cand es
   if(interrupt_time_start_btn - last_interrupt_time_start_btn > 200){
     //daca butonul a fost apasat
     if (digitalRead(SW_PIN) == LOW) {
-      // Switch was pressed
       // schimba starea variabilei joystick_btn
       joystick_btn = 1;
     }
@@ -128,8 +126,8 @@ void IRAM_ATTR ISR_START() { // se trimite o intrerupere de fiecare data cand es
 
 //ISR pentru apasarea butonului open
 void IRAM_ATTR ISR_OPEN() { // se trimite o intrerupere de fiecare data cand este apasat butonul de start
-  // Check status of switch
-  // Toggle on variable if button pressed
+  // Verifica statusul butonului
+  // Schimba valoare variabilei corespunzatoare butonului in 1
   
   interrupt_time_open_btn = millis();//retine momentul la care s-a produs intreruperea curenta
 
@@ -137,7 +135,6 @@ void IRAM_ATTR ISR_OPEN() { // se trimite o intrerupere de fiecare data cand est
   if(interrupt_time_open_btn - last_interrupt_time_open_btn > 200){
     //daca butonul a fost apasat
     if (digitalRead(OPEN_BTN) == LOW) {
-      // Switch was pressed
       // schimba starea variabilei open_button
       open_button = 1;
     }
@@ -149,8 +146,8 @@ void IRAM_ATTR ISR_OPEN() { // se trimite o intrerupere de fiecare data cand est
 
 //ISR pentru apasarea butonului flag
 void IRAM_ATTR ISR_FLAG() { // se trimite o intrerupere de fiecare data cand este apasat butonul de start
-  // Check status of switch
-  // Toggle on variable if button pressed
+  // Verifica statusul butonului
+  // Schimba valoare variabilei corespunzatoare butonului in 1
   
   interrupt_time_flag_btn = millis();//retine momentul la care s-a produs intreruperea curenta
 
@@ -158,7 +155,6 @@ void IRAM_ATTR ISR_FLAG() { // se trimite o intrerupere de fiecare data cand est
   if(interrupt_time_flag_btn - last_interrupt_time_flag_btn > 200){
     //daca butonul a fost apasat
     if (digitalRead(FLAG_BTN) == LOW) {
-      // Switch was pressed
       // schimba starea variabilei flag_button
       flag_button = 1;
     }
@@ -411,8 +407,8 @@ void timer_display(unsigned long start_time){
 char new_name[3]; //variabila in care se stocheaza numele introdus
 
 struct Record {
-  char name[4];  // 3 litere+ null terminator
-  int time;      // Timp rezolvare in millisecunde
+  char name[4];  // 3 litere + null terminator
+  int time;      // Timp de rezolvare in ms
 };
 
 Record records[10] = {{"---", 1200000}, {"---", 1200000}, {"---", 1200000}, {"---", 1200000}, {"---", 1200000},
